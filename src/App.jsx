@@ -377,12 +377,13 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <ContactSection scrollToSection={scrollToSection} />
+      <ContactSection />
     </div>
   );
 };
 
 // Contact Components
+// eslint-disable-next-line no-unused-vars
 const ContactItem = React.memo(({ icon: IconComponent, title, content }) => (
   <div className="flex items-center gap-4">
     <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white">
@@ -456,8 +457,17 @@ const ContactForm = React.memo(() => {
         value={formData.message}
         onChange={handleChange}
       />
-      <button type="submit" className="w-full btn-gradient">
-        Send Message
+      <button
+        type="button"
+        onClick={() => {
+          const message = `Hello Ishaq! I'm interested in discussing a project.%0A%0AName: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+          const whatsappUrl = `https://wa.me/6288210731718?text=${message}`;
+          window.open(whatsappUrl, "_blank");
+        }}
+        className="w-full btn-gradient flex items-center justify-center gap-2"
+      >
+        <span className="text-lg">💬</span>
+        Send Message via WhatsApp
       </button>
     </form>
   );
@@ -489,7 +499,7 @@ const TextAreaField = React.memo(({ name, placeholder, value, onChange }) => (
   />
 ));
 
-const ContactSection = React.memo(({ scrollToSection }) => (
+const ContactSection = React.memo(() => (
   <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-16">
@@ -547,6 +557,11 @@ const ContactSection = React.memo(({ scrollToSection }) => (
                 href="https://www.instagram.com/hannan_rozen/"
                 icon={Instagram}
                 label="Instagram Profile"
+              />
+              <SocialLink
+                href="https://wa.me/6288210731718"
+                emoji="💬"
+                label="WhatsApp"
               />
             </div>
           </div>
