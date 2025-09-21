@@ -523,12 +523,12 @@ const ContactSection = React.memo(() => (
             <ContactItem
               icon={Mail}
               title="Email"
-              content="ishaqhannanrozen@gmail.com"
+              content="hannanrozen4567@gmail.com"
             />
             <ContactItem
               icon={Phone}
               title="Phone"
-              content="+62 812-3456-7890"
+              content="+62 882-1073-1718"
             />
             <ContactItem
               icon={MapPin}
@@ -557,11 +557,6 @@ const ContactSection = React.memo(() => (
                 href="https://www.instagram.com/hannan_rozen/"
                 icon={Instagram}
                 label="Instagram Profile"
-              />
-              <SocialLink
-                href="https://wa.me/6288210731718"
-                emoji="💬"
-                label="WhatsApp"
               />
             </div>
           </div>
