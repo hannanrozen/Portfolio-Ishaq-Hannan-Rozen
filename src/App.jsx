@@ -7,7 +7,9 @@ import {
   MapPin,
   Menu,
   X,
+  Instagram,
   Figma,
+  Linkedin,
 } from "lucide-react";
 import {
   useScrollEffect,
@@ -537,13 +539,13 @@ const ContactSection = React.memo(({ scrollToSection }) => (
                 label="GitHub Profile"
               />
               <SocialLink
-                href="https://linkedin.com/in/ishaq-hannan-rozen"
-                emoji="💼"
+                href="https://www.linkedin.com/in/hannanrozen/"
+                icon={Linkedin}
                 label="LinkedIn Profile"
               />
               <SocialLink
-                href="https://instagram.com/ishaqhannanrozen"
-                emoji="📷"
+                href="https://www.instagram.com/hannan_rozen/"
+                icon={Instagram}
                 label="Instagram Profile"
               />
             </div>
