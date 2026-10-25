@@ -241,7 +241,7 @@ const Hero = () => (
       </div>
 
       {/* Portrait with the report card overlapping its lower-left corner */}
-      <div className="relative mx-auto w-full max-w-[440px] pb-28 lg:mr-0">
+      <div className="relative mx-auto w-full max-w-[440px] sm:pb-28 lg:mr-0">
         <div className="absolute top-6 right-0 -z-10 aspect-[4/5] w-[78%] translate-x-4 rounded-3xl border border-line bg-accent-soft/50" aria-hidden="true" />
         <img
           src={ProfileImage}
@@ -250,7 +250,7 @@ const Hero = () => (
           height="1000"
           className="ml-auto aspect-[4/5] w-[78%] rounded-3xl object-cover shadow-xl shadow-slate-300/50"
         />
-        <ReportCard className="absolute bottom-0 left-0 w-[88%]" />
+        <ReportCard className="relative -mt-16 w-[94%] sm:absolute sm:bottom-0 sm:left-0 sm:mt-0 sm:w-[88%]" />
       </div>
     </div>
   </section>
@@ -458,8 +458,8 @@ const EarlierWork = () => (
             <div className="p-5">
               <h3 className="font-semibold text-ink">{work.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{work.description}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <div className="flex gap-2">
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-2">
                   {work.tech.map((tech) => (
                     <Tag key={tech}>{tech}</Tag>
                   ))}
