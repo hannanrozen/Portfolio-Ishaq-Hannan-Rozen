@@ -14,15 +14,15 @@ export const profile = {
   github: "https://github.com/hannanrozen",
   cv: "/CV_Ishaq_Hannan_Rozen_QA_2026.pdf",
   summary:
-    "QC Engineer with 1+ year of hands-on experience across the full STLC — requirement analysis, test design, execution, defect tracking, and UAT — on enterprise web and mobile applications for government and telecommunications clients.",
+    "QC Engineer with 1+ year of hands-on experience across the full STLC — requirement analysis, test design, execution, defect tracking, and UAT — on enterprise web and mobile applications for government and telecommunications clients. 15+ projects handled and 3,000+ test cases authored.",
 };
 
 export const metrics = [
   // Numbers animate from `from` (default 0) to `to` when scrolled into view
   { to: 15, suffix: "+", label: "Projects tested", note: "Web, Android & iOS" },
-  { to: 200, suffix: "+", label: "Test cases / major project", note: "BDD, traceable to SRS" },
-  { from: 4, to: 1, prefix: "4h → ", suffix: "h", label: "Regression time", note: "On automated flows" },
-  { to: 100, suffix: "%", label: "UAT pass rate", note: "Across handled projects" },
+  { to: 3000, suffix: "+", label: "Test cases authored", note: "Up to 500+ on one major project" },
+  { from: 4, to: 1, prefix: "4h → ", suffix: "h", label: "Regression time", note: "75% faster on automated flows" },
+  { to: 100, suffix: "%", label: "UAT sign-off rate", note: "Across handled projects" },
 ];
 
 export const process = [
@@ -66,10 +66,10 @@ export const experience = [
     ],
     highlights: [
       ["Testing across the STLC", "Functional, regression, E2E, and UAT testing on 15+ government and telecom projects — multi-role access control, approval flows, email and in-app notifications."],
-      ["Test design", "Up to 200+ BDD test cases per major project from SRS analysis, with requirement traceability and test plans/runs organized per release."],
+      ["Test design", "3,000+ BDD test cases authored in total — up to 500+ per major project — from SRS analysis, with requirement traceability and test plans/runs organized per release."],
       ["Defect management", "Reported, prioritized, and retested 50+ defects per release cycle under an H+2 fixing SLA, working with developers and BAs."],
-      ["UAT", "Led pre-UAT regression and coordinated UAT sessions (scripts, MoM, findings triage) — 100% UAT pass rate across handled projects."],
-      ["Test automation", "Built Playwright + TypeScript E2E suites for a telecom deployment platform; automated ~20% of UAT cases and cut regression from 4h to 1h per cycle."],
+      ["UAT", "Led pre-UAT regression and coordinated UAT sessions (scripts, MoM, findings triage) — 100% UAT sign-off rate across handled projects."],
+      ["Test automation", "Built Playwright + TypeScript E2E suites for a telecom deployment platform; automated ~20% of UAT cases and cut regression time by 75% (4h → 1h per cycle)."],
       ["Test stability", "Diagnosed flaky failures with network traces and API response checks, replacing unreliable UI signals with verifiable ones."],
       ["AI-assisted QA", "Authored reusable prompts/skills encoding team test case and defect standards for Claude Code + MCP integrations; led an AI-assisted automation pilot with ROI report."],
       ["Performance testing", "Load testing with JMeter to establish performance baselines before production release."],
@@ -97,7 +97,7 @@ export const caseStudies = [
       "Multi-role chained flows (vendor assignment → permit → approval) and batch submissions across many cluster IDs took hours to regress manually.",
     approach:
       "Playwright + TypeScript suites with page-level fixtures, shared run state across dependent specs, file-upload test data, and network-response assertions.",
-    result: "Regression on automated flows: 4h → 1h per cycle",
+    result: "Regression on automated flows: 75% faster (4h → 1h per cycle)",
     tags: ["Playwright", "TypeScript", "Fixtures", "Network assertions"],
   },
   {

@@ -170,10 +170,10 @@ const ReportCard = ({ className = "" }) => (
       <ul className="space-y-2 pl-2">
         {[
           "owns the full STLC end to end",
-          "designs 200+ BDD cases per major project",
+          "authored 3,000+ BDD test cases",
           "retests 50+ defects per release (H+2 SLA)",
-          "cuts regression 4h → 1h with Playwright",
-          "ships with 100% UAT pass rate",
+          "cuts regression time by 75% with Playwright",
+          "ships with 100% UAT sign-off rate",
         ].map((line) => (
           <li key={line} className="flex items-start gap-2.5 text-ink">
             <Check size={14} className="mt-0.5 shrink-0 text-pass" strokeWidth={3} />
@@ -258,13 +258,14 @@ const Hero = () => (
 
 const CountUp = ({ from = 0, to, prefix = "", suffix = "" }) => {
   const { ref, value } = useCountUp(from, to);
-  const final = `${prefix}${to}${suffix}`;
+  const format = (n) => n.toLocaleString("en-US");
+  const final = `${prefix}${format(to)}${suffix}`;
   return (
     <span ref={ref} data-testid="metric-value" data-final={final}>
       <span className="sr-only">{final}</span>
       <span aria-hidden="true">
         {prefix}
-        {value}
+        {format(value)}
         {suffix}
       </span>
     </span>
