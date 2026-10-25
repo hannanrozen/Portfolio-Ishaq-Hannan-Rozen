@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   Check,
   Download,
@@ -535,9 +536,19 @@ const Contact = () => (
 
 const Footer = () => (
   <footer className="bg-ink pb-10 text-slate-500">
-    <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-white/10 px-4 pt-8 text-xs sm:flex-row sm:justify-between sm:px-6">
-      <p>© {new Date().getFullYear()} {profile.name}</p>
-      <p className="font-mono">Built with React · Tailwind · smoke-tested with Playwright</p>
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm">
+        <p>
+          © {new Date().getFullYear()} {profile.name} · {profile.location}
+        </p>
+        <a
+          href="#home"
+          className="inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
+        >
+          Back to top
+          <ArrowUp className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
     </div>
   </footer>
 );
