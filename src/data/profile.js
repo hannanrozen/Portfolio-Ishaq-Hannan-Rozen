@@ -135,21 +135,22 @@ export const caseStudies = [
 ];
 
 export const skills = [
+  // Tags ordered by relevance for QA openings (API, data, regression first)
   {
     group: "Testing",
-    items: ["Functional", "Regression", "End-to-End", "Smoke & Sanity", "Exploratory", "API", "Cross-browser", "UAT", "Usability", "Mobile (Android/iOS)", "Load Testing"],
-  },
-  {
-    group: "Automation & Tools",
-    items: ["Playwright", "TypeScript", "JavaScript", "Maestro (mobile)", "JMeter", "Mailpit", "Claude Code"],
+    items: ["API", "Database / Data Validation", "Regression", "Functional", "End-to-End", "Smoke", "Exploratory", "Cross-browser", "Mobile (Android/iOS)", "UAT", "Usability", "Load Testing"],
   },
   {
     group: "Test Design & Docs",
-    items: ["SRS Analysis", "Test Plan", "Gherkin / BDD", "Requirement Traceability", "Defect Reporting", "UAT Scripts", "User Guides"],
+    items: ["Test Case Design", "Test Scenario", "SRS Analysis", "Test Plan", "Gherkin / BDD", "Requirement Traceability", "Defect Reporting", "UAT Scripts", "User Guides"],
   },
   {
-    group: "Process & Management",
-    items: ["SDLC", "STLC", "Agile / Scrum", "ActiveCollab", "Taiga", "Test management tool"],
+    group: "Automation & Tools",
+    items: ["Playwright", "TypeScript", "SQL", "Apidog", "Git", "GitHub Actions (CI/CD)", "JavaScript", "Maestro (mobile)", "DBeaver", "Chrome DevTools", "Jam.dev", "JMeter", "AI-assisted QA (Claude Code)"],
+  },
+  {
+    group: "Process & Tracking",
+    items: ["SDLC", "STLC", "Agile / Scrum", "Defect Life Cycle", "Test Case Management", "ActiveCollab", "Taiga"],
   },
 ];
 
