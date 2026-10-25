@@ -1,155 +1,80 @@
 // src/hooks/useScrollEffect.js
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export const useScrollEffect = () => {
+export const useScrollEffect = (sectionIds) => {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState(sectionIds[0]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setScrolled(scrollTop > 100);
+      setScrolled(window.scrollY > 24);
 
-      // Update active section
-      const sections = ["home", "about", "projects", "contact"];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
+      // Last section whose top has passed the nav line wins
+      const current = sectionIds.filter((id) => {
+        const element = document.getElementById(id);
+        return element && element.getBoundingClientRect().top <= 120;
       });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(current.at(-1) ?? sectionIds[0]);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sectionIds]);
 
   return { scrolled, activeSection };
 };
 
-export const useIntersectionObserver = (options = {}) => {
+// Reveals an element once when it first enters the viewport
+export const useReveal = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasBeenVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
-          setHasBeenVisible(true);
-        } else if (!hasBeenVisible) {
-          setIsVisible(entry.isIntersecting);
+          observer.disconnect();
         }
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-        ...options,
-      }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [hasBeenVisible, options]);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return { ref, isVisible };
 };
 
-// Hook for managing form state
-export const useFormState = (initialState = {}) => {
-  const [formData, setFormData] = useState(initialState);
-
-  const updateField = useCallback((name, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }, []);
-
-  const handleInputChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      updateField(name, value);
-    },
-    [updateField]
-  );
-
-  const resetForm = useCallback(() => {
-    setFormData(initialState);
-  }, [initialState]);
-
-  return {
-    formData,
-    updateField,
-    handleInputChange,
-    resetForm,
-  };
-};
-
-// Hook for debouncing values (useful for search inputs)
-export const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+// Animates a number from `from` to `to` once the element enters the viewport
+export const useCountUp = (from, to, duration = 1400) => {
+  const { ref, isVisible } = useReveal();
+  const [value, setValue] = useState(from);
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
+    if (!isVisible) return;
 
-    return () => {
-      clearTimeout(handler);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setValue(to);
+      return;
+    }
+
+    let frame;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(from + (to - from) * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
     };
-  }, [value, delay]);
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [isVisible, from, to, duration]);
 
-  return debouncedValue;
-};
-
-// Hook for local storage with SSR safety
-export const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    if (typeof window === "undefined") {
-      return initialValue;
-    }
-
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error(`Error reading localStorage key "${key}":`, error);
-      return initialValue;
-    }
-  });
-
-  const setValue = useCallback(
-    (value) => {
-      try {
-        const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
-        setStoredValue(valueToStore);
-
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem(key, JSON.stringify(valueToStore));
-        }
-      } catch (error) {
-        console.error(`Error setting localStorage key "${key}":`, error);
-      }
-    },
-    [key, storedValue]
-  );
-
-  return [storedValue, setValue];
+  return { ref, value };
 };

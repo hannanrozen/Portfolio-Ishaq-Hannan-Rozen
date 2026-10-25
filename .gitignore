@@ -8,3 +8,10 @@ build/
 # Environment variables
 .env
 .env.local
+# Playwright
+test-results
+playwright-report
+
+# Local source files (raw CV, photos) and tool caches
+Doc/
+.tokensave/
