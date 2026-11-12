@@ -44,7 +44,7 @@ export const process = [
   {
     step: "04",
     title: "Report",
-    body: "File reproducible defects with steps, evidence, and expected results — then retest within the H+2 fixing SLA.",
+    body: "File reproducible defects with steps, evidence, and expected results — then retest within the D+2 (2-day) fixing SLA.",
   },
   {
     step: "05",
@@ -61,13 +61,13 @@ export const experience = [
     blurb:
       "IT consulting company delivering business process automation systems for government and private sectors.",
     roles: [
-      { title: "Quality Control Engineer (Contract)", period: "Jan 2026 – Present" },
+      { title: "Quality Control Engineer (Contract)", period: "Dec 2025 – Present" },
       { title: "Quality Control Intern", period: "Jul 2025 – Dec 2025" },
     ],
     highlights: [
       ["Testing across the STLC", "Functional, regression, E2E, and UAT testing on 15+ government and telecom projects — multi-role access control, approval flows, email and in-app notifications."],
       ["Test design", "3,000+ BDD test cases authored in total — up to 500+ per major project — from SRS analysis, with requirement traceability and test plans/runs organized per release."],
-      ["Defect management", "Reported, prioritized, and retested 50+ defects per release cycle under an H+2 fixing SLA, working with developers and BAs."],
+      ["Defect management", "Reported, prioritized, and retested 50+ defects per release cycle with clear steps, evidence, and expected results under a D+2 (2-day) fixing SLA, working with developers and project administrators via ActiveCollab and QA Tools."],
       ["UAT", "Led pre-UAT regression and coordinated UAT sessions (scripts, MoM, findings triage) — 100% UAT sign-off rate across handled projects."],
       ["Test automation", "Built Playwright + TypeScript E2E suites for a telecom deployment platform; automated ~20% of UAT cases and cut regression time by 75% (4h → 1h per cycle)."],
       ["Test stability", "Diagnosed flaky failures with network traces and API response checks, replacing unreliable UI signals with verifiable ones."],
@@ -94,11 +94,33 @@ export const caseStudies = [
     kind: "E2E Automation",
     context: "Telecommunications client · 2025–2026",
     problem:
-      "Multi-role chained flows (vendor assignment → permit → approval) and batch submissions across many cluster IDs took hours to regress manually.",
+      "Multi-role chained permit and RFS flows, plus batch submissions across many cluster IDs, took hours to regress manually.",
     approach:
       "Playwright + TypeScript suites with page-level fixtures, shared run state across dependent specs, file-upload test data, and network-response assertions.",
-    result: "Regression on automated flows: 75% faster (4h → 1h per cycle)",
+    result: "~20% of UAT cases automated · regression 75% faster (4h → 1h per cycle)",
     tags: ["Playwright", "TypeScript", "Fixtures", "Network assertions"],
+  },
+  {
+    title: "QA Tools — Test Management Enhancement & Redesign",
+    kind: "QA Lead",
+    context: "Internal product · 2026",
+    problem:
+      "The whole QC team runs test cases, plans, runs, and defects in this in-house tool — gaps in its flows slow every project, and external UAT clients had no way in.",
+    approach:
+      "Led the enhancement team end to end: defined requirements, flows, and UI design, coordinated developers, and validated each release as primary user and QA.",
+    result: "Releases validated for the QC team · self-service Add User proposed for UAT client access",
+    tags: ["Requirements", "UI design", "Release validation", "Stakeholders"],
+  },
+  {
+    title: "Workflow Platform Mobile App",
+    kind: "Mobile",
+    context: "Android & iOS · Flutter",
+    problem:
+      "One Flutter codebase ships to two platforms — behavior can drift between Android and iOS without anyone noticing.",
+    approach:
+      "Ran separate manual regression cycles for Android and iOS, tested the backing APIs with Apidog, managed test cases in QA Tools, and coordinated UAT with stakeholders.",
+    result: "Per-platform regression cycles through to UAT",
+    tags: ["Mobile", "Android / iOS", "Apidog", "UAT"],
   },
   {
     title: "Email & In-App Notification Regression",
@@ -158,19 +180,19 @@ export const education = [
   {
     title: "Bachelor of Information Technology",
     org: "Universitas Negeri Yogyakarta",
-    period: "2020 – 2024",
+    period: "Sep 2020 – Oct 2024",
     note: "GPA 3.70 / 4.00",
   },
   {
     title: "Front-End Web Development Bootcamp",
     org: "Dibimbing.id",
-    period: "2025",
+    period: "Apr 2025 – Sep 2025",
     note: "Score 92.53 — applied to locator strategy & UI automation",
   },
   {
     title: "UI/UX Independent Study",
     org: "Productzilla Academy · Kampus Merdeka",
-    period: "2023",
+    period: "Feb 2023 – Jun 2023",
     note: "Score 82.00 — UX research, usability testing",
   },
 ];
